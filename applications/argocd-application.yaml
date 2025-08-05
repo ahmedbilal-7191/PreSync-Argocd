@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+  namespace: argocd  # Argo CD must watch this namespace
+  labels:
+    app: backend-app
+spec:
+  project: default
+
+  source:
+    repoURL: https://caf6762bbd39639fea82e1623f224486-3000.maxwell.assessments.scaler.com/john_doe/Presync-Hook-Argocd.git
+    targetRevision: HEAD
+    path: manifests
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
