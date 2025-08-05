@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://caf6762bbd39639fea82e1623f224486-3000.maxwell.assessments.scaler.com/john_doe/Presync-Hook-Argocd.git
+    repoURL: https://github.com/ahmedbilal-7191/PreSync-Argocd.git
     targetRevision: HEAD
     path: manifests
 
