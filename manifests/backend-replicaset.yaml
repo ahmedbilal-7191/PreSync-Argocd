@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: backend
+  namespace: argocd
+  labels:
+    app: backend
+    tier: backend
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-weight: "1"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        tier: backend
+    spec:
+      containers:
+      - name: backend-container
+        image: nginx:latest  # Replace with your backend image
+        ports:
+        - containerPort: 8080
