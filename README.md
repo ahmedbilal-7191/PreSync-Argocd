@@ -1,0 +1,1 @@
+The objective of this is to ensure that a database migration process completes before deploying a backend application using ArgoCD PreSync hooks.Ensure ArgoCD enforces the correct deployment order (PreSync → Backend → Service).
